@@ -1,0 +1,164 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 2
+    mermaid:
+      theme: dark
+      fontSize: 12
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+# A/B testing
+
+
+---
+
+A/B testing, also called *clinical trial,* is a canonical procedure 
+
+it can *reject* the null hypotheses thus corroborating a causality hypothesis
+
+We will collect opinions on the basis of the interaction given by the page itself.
+
+
+---
+
+## The Method
+
+1. Classically: divide the sample into two. On the Web: random-assign visitors to groups A and B.
+
+2. To group A give a *stimulus* such as an announcement, or a discount or a new color schema.
+
+3. Collect a *feedback* such as the clicking of a button.
+
+4. compare the stats about group A and group B: which one reacted most?
+
+---
+
+## Example
+
+
+![](./imgs/A-B_testing_simple_example.png)
+
+
+---
+
+## Rough Stats, 1
+
+What if the imbalance in the reaction is accidental?
+
+To answer we need to deploy *Statistical Hypothesis testing* to evaluate the impact a different interaction makes.
+
+The expected outcome/most probable outcome is assumed to be the central value of a Gaussian distribution
+
+
+---
+
+__the expected outcome for A (treatment) is assumed to be the same as B (no treatment)__
+
+![](./imgs/AB-Testing.png)
+
+Next, we compute the probability of the observed score wrt. the Gaussian prob. distribution centered on the expected value: 
+
+If 38% is expected, what's the prob. of obtaining 21%?
+
+*the more distant it is, the least likely it is to have occured by chance*
+
+
+---
+
+## Rough Stats, 2
+
+__If__ the recorded imbalance had prob. to occur below 5%
+
+__then__ we reject the *null hypothesis:* the imbalance ain't just a fluctuation
+
+Hence, we may approve the *stimulus* as effective
+
+---
+
+
+## Rough Stats, 3
+
+a group is biased if it represents a distribution that is different from that of the general population
+
+But how do we know the general population?
+
+Main Stats result: random samples tend to be unbiased: they can represent the whole population
+
+__Note:__ population here is *users visiting our web site:* its open nature guarantees against bias
+
+
+---
+
+## Implementing A/B testing
+
+Cover the w3school lecture on [display](https://www.w3schools.com/cssref/pr_class_display.php)
+
+__Challenge:__ can you think of an A/B test that uses diplay to get the differential feedback about a new feature which is shown (or not)
+
+---
+
+## Idea for a solution
+
+* use the abTest function to select some visitor
+
+* for group A, write a JS function which 'switches' the `display` of some part of the text, i.e., from
+
+```css
+p.classA {
+  display: none;
+}
+
+p.classB {
+  display: block;
+}
+```
+
+Reference: [JavaScript HTML DOM - Changing CSS](https://www.w3schools.com/js/js_htmldom_css.asp)
+
+---
+
+## Local assignment
+
+Each user has the same probability of getting into group A
+
+We don't control the process but we can relay on (almost) half of our visitors going to A
+
+
+```javascript
+function randAssign() {
+  // Import pre-made functions in the Math library
+  // guess a random number (of type 'float') in [0, 1)
+    myrand = Math.random();
+
+  // half of the times (more or less) the 
+  // guessed number will be below 0.5:
+  if (myrand >= 0.5) {
+      return 'A'
+  } else {
+      return 'B'
+  }
+}
+```
+
+---
+
+## Lab work
+
+- in `test-platform` find a JS boilerplate for A/B testing new HTML features
+
+- random assignment of users to A/B
+
+- features appear/disappear
+
+- we record A/B into cookies for subsequent visits
+  
+-  but we still need to report effects back to the server

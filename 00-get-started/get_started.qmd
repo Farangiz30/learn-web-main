@@ -1,0 +1,155 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+
+# Welcome
+
+---
+
+## Join online resources:
+
+- __MS Teams__: there is a class team for instant sharing files and updates. It will also record classes.  
+
+- __MyAriel__: a traditional educational web page with materials for download, links and quizzes.
+
+- __Github__: a de facto standard repository for code and for collaboration. If time allows, a Github classroom will be created
+
+---
+
+## Code of conduct
+
+- phones in the bag, off or on mute 
+
+- laptops on, with Teams on and the rest off
+
+- a loud environment: keep your voice low at all times
+
+- VS Code for coding locally, from lab computers use [vscode.dev/](https://vscode.dev/)
+  
+- Firefox for testing.
+
+---
+
+## Timetable
+
+- Friday 14:30 to 17:30: lectures + labs
+  
+- Saturday 9:00 to 11:45: lectures, labs and workshop: work on your exam project.
+  
+---
+
+## Learning objectives
+
+* formal learning: coding autonomy with hypertext, markup, interpretation, boilerplates, web linking, containers etc.
+
+* informal learning: plan, design and implement *a web communication project;* create a mock and present it to a technical/business committee
+
+---
+
+### Postponed gratification
+
+* working in COM today often involves joining a web/multimedia team
+
+* teams with *front-end* (UX) and *back-end* figures
+
+* as with all technical communities, a jargon and unspoken assumptions
+
+* technology is often unnecessarily obscure and
+
+* continuously changing  
+
+---
+
+##### Webcomm enables you to 
+
+* navigate
+    
+    * a complex jargon
+    
+    * new languages, new development tools, new delivery mechanisms
+
+* communicate with _techies_ effectively
+
+* articulate what you want
+
+* come up with your own concepts (mock-ups)
+
+* if Web page design is your thing, a reasonable shot at getting *junior front-end developer* positions
+
+
+# The exam
+
+- detailed instructions on the MyAriel page
+
+-submit your project in advance
+  
+- [TBC] async assessment
+
+---
+
+## Let's look at past exam essays
+
+
+(some projects may have gone taken offline)
+
+
+Refactoring of existing web sites:
+
+[4T Mechanical toolmaker near Bologna](https://www.4tsrl.it/)
+
+Freelance photographer
+
+[Ekaterina's photography workshop](https://ekaterinaphotography.w3spaces.com/)
+
+[Technical brief/pith deck](https://ekaterinaphotography.w3spaces.com/presentation/#/title-slide)
+
+New concepts for private dining in Milan
+
+[The rooting table](https://gtedescoo.github.io/)
+
+[Technical brief/pitch deck](https://gtedescoo.github.io/pitch/#/the-rooting-table)
+
+---
+
+## Critical assessment
+
+- to go from vision to industry we need concrete *sketches* or *artifacts*
+
+- current pages are created only by the execution of complex Javascript (JS) codes: this is left for advanced training
+  
+- customer profiling/monitoring begins right at code level: let's see how
+
+- implementation autonomy relieves us from dependence on social web platforms
+
+
+# Online resources
+
+
+---
+
+## The self-study playground
+
+[https://www.wdpg.io/](https://www.webdesignplayground.io/)
+
+
+---
+
+## Githib and GH workspace: 
+
+[www.github.com](https://www.github.com)
+
+[A tutorial](https://github.blog/developer-skills/github/beginners-guide-to-github-repositories-how-to-create-your-first-repo/)
+
+

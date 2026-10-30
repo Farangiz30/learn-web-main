@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 1%;
+}
+
+
+/* vanilla typography, change if you wish
+*/
+
+h1 {
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: normal;
+    color: blueviolet;
+}
+
+span {
+    font-variant: small-caps;
+    background-color: antiquewhite;
+}
+
+
+/* table formatting, change only if you're sure
+this setup is from the w3schools:
+https://www.w3schools.com/html/html_tables.asp
+*/
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

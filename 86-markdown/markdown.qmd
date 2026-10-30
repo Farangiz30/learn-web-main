@@ -1,0 +1,242 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 2
+    mermaid:
+      theme: dark
+      fontSize: 12
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+# Markdown
+
+---
+
+## Mark-up, a recap
+
+Enrich the text with annotations that may describe 
+
+- its structure: `<body>`, `<header>`, `<p>` ...
+
+- how it should be rendered: `<h1>`, `<b>` ... 
+
+- the meaning of its parts: `<title>`, `<quote>` `<article>` ...  
+
+. . .
+
+Residual cases:
+
+- tags inside `<head>` for indexing etc., in particular `<meta>`
+
+- tages inside `<body>`: `<div>` and `<span>`
+
+
+---
+
+## Currently
+
+- we are editing HTML documents to provide a bit of all this
+  
+- the text is irremediably mixed with the mark-up
+
+- the mark-up is not very readable and often repetitive
+
+
+---
+
+## The Markdown vision
+
+1. prepare a text file with all the content but only minimal annotations: the Markdown file `my_contents.md`
+
+2. feed it to a *parser* software, e.g., *pandoc* that *renders* it: 
+
+   - HTML tags are *injected* into the file, and 
+  
+   - CSS styles are linked and assigned to tags
+  
+3. the thus-created `my_page.html` can be manually refined/tweaked, if need be
+
+4. publish it
+
+---
+
+## Markdown rendering
+
+MD code is *rendered* into HTML equivalent annotations
+
+platforms with web page generation support MD contents and render them automatically:
+
+- MyAriel
+
+- GitHub
+
+---
+
+## MD is useful:
+
+
+in the `my_page.html` version:
+
+- fixed parts, e.g., `<body>...</body>` are automatically incorporated
+
+- annotations are interpreted and incorporated:
+
+    - `# My title` --> `<h1>My title</h1>`
+  
+    - `__nota bene__` --> `<b>nota bene</b>` and so on
+
+- less error-prone than HTML
+
+- fragments (as opposed to a complete page) can be easily integrated
+
+- uniform page appearance
+
+---
+
+## two meanings for `[]()`
+
+
+`[linked text](https://www.unimi.it)` --> 
+
+. . .
+
+`<a href='https://www.unimi.it'>linked text</a>`
+
+. . .
+
+`![](./imgs/image.png)` --> 
+
+. . .
+
+`<img src='./imgs/image.png'>`
+
+
+---
+
+MD files are essentially parsed and rendered row by row
+
+it is possible to put HTML tags into a MD file and to see them in the rendering.
+
+```html
+### this is an h3 title in MD
+
+<img src='./imgs/image.png' width="50%" alt='Merry Xmas'>
+
+__this is a boldface caption to the image__
+```
+
+---
+
+## MD interpreters
+
+- download the MD extension for VS Code
+
+- use online interpreters from GitHub
+  
+![](./imgs/online-html-to-markdown.png)
+
+
+---
+
+## The limits of MD
+
+There is no internation/industrial standard:
+
+ambiguity ensues
+
+`![My text](./imgs/image.png)` --> 
+
+::::{.columns}
+::: {.column width="50%"}
+```html
+<img src='./imgs/image.png' alt="My text">
+```
+:::
+::: {.column width="50%"}
+```html
+<img src='./imgs/image.png'>
+
+<h6>My text</h6>
+```
+:::
+::::
+
+Use Pandoc/Quarto Markdown
+
+
+# Learn MD
+
+
+---
+
+## Get started 
+
+Study the simplified language on [GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) where interpretation is automated
+
+GitHub interprets Markdown automatically
+
+Example: [collapsed sections](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections)
+
+
+---
+
+## Mardown in VS Code
+
+VS code supplies a preview of the rendering of `.md` files
+
+install the [Markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) extension by Yu Zhang
+
+The page explains how to code MD quickly
+
+![](./imgs/md-all-in-one.png)
+
+
+# Summary of the method 
+
+---
+
+- Markdown is the simplest, lightest form of text annotation
+
+- the pandoc software takes our MD text and generates an equiv. HTML page
+
+  - fragments for inclusion into an existing page, or 
+  - standalone pages
+
+- VS Code+Markdown-all-in-one supports MD with highlighting & preview
+
+- [pandoc.org/try/](https://pandoc.org/try/) generates pages from MD texts
+  
+- install Pandoc on your computer to render pages
+
+- other output formats are available: DOCX, PPTX, PDF, EPUB etc.
+  
+---
+
+## Self-assessment
+
+- what is mark-up?
+
+- what is rendering? Who/what does it?
+
+- what is HTML injection? Who/what does it?
+
+- why do README.md files look good on GitHub?
+
+- what is pandoc?
+
+---
+
+## Coda: the HTML injection attack
+
+Malicious HTML generation could embed invisible parts that in fact communicate, using HTTP Post() methods!
+
+![](./imgs/html-injection-attack.png)
+

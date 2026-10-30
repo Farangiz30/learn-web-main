@@ -1,0 +1,108 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+# Recap
+
+---
+
+## Concepts, a
+
+HTTP is the industrial protocol that underpins *the Web* as we know it 
+
+client-server architecture: server is idle until client starts requests
+
+browsers serve `<a>` tags and follow all linked resources (CSS files, images etc.)
+
+files are copied locally
+
+stateless: no *conversation* (introduced later)
+
+---
+
+## Concepts, b
+
+Pages with multiple, external CSSs
+
+Exercise: apply a fav CSS from *the garden* to your Lorem page 
+
+To see effects, we need to use the same tags as their original HTML
+
+Syntax and order of the links in `<head>` are crucial
+
+---
+
+## Concepts, c
+
+Graphics/AV sources are *embeddable*
+
+via `<img>` tags any source file, anywhere, can be embedded
+
+Also, embeddable code for Google Maps and YouTube etc.
+
+---
+
+## Concepts, d
+
+The *Hero Image* concept and its execution:
+
+Embedding via specific CSS set ups that *fix* the hero 
+
+Text-on-image special fonts and colours
+
+Exercise: embed Cicero's images on your Lorem page
+
+# 4-Sat Recap 
+
+
+## Concepts and competencies
+
+- computer organisation
+
+  - manila folders
+
+  - terminal and its commands: `dir`/`ls`, `cd`..
+
+- Git protocol
+
+  - participate in Web/software projects `git clone https...`
+  - obtain updates `git pull`
+  - save your work `git stash` / `git commit -a -m ""`
+
+---
+
+
+- work offline
+
+  - VS Code and extensions
+
+- HTML
+
+  - tags and their nestings
+
+  - basic tags
+
+  - `<div>...</div>`
+
+ 
+- CSS
+
+  - keep in separated file
+
+  - create own styles:   - `.myfancygothictitle {...}`
+
+
+## Current project
+
+

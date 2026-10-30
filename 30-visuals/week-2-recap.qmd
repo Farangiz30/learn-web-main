@@ -1,0 +1,146 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+# Recap
+
+---
+
+## What is expected now
+
+- Win: `chocolatey`; MacOS: `HomeBrew` 
+- `VS Code` with several extensions
+- a local copy of the GH repo [github.com/ale66/learn-coding](https://github.com/ale66/learn-coding)` 
+- a HTML file in your name inside `...\learn-web\15-lorem-boilerplate`
+  - rename `rename-then-edit-me.html` into, e.g., `ale-lorem-page.html` 
+- a CSS file in your name, also inside `...\learn-web\15-lorem-boilerplate`
+    - rename `mystyle.css` into, e.g., `ale-style.css` 
+
+---
+
+## Concepts, a
+
+The HTML baseline code (aka boilerplate) read out and commented line-by-line
+
+Still curious about what goes into `<head>`?
+
+---
+
+## Concepts, b
+
+Some default tags support styling text.
+
+While HTML is built for *pages* we are now focus on documents that are digital-only: no (or not necessarily) left-to-right top-down
+
+---
+
+## Concepts, c
+
+Style: all in a separate file please
+
+Styling is a separated activity, CSS files are often re-used
+
+---
+
+## Concepts, d
+
+
+The `<a>` tag:
+
+```html
+<a href="#label">go down on this page</a>
+...
+<div id="label">...
+```
+
+. . .
+
+```html
+<a href="./another_page.html">go to another page of the same site</a>
+```
+
+. . .
+
+```html
+<a href="https://unimi.it/ma/com/">go to a web site</a>
+```
+
+. . .
+
+```html
+<a href="https://unimi.it/ma/com/exams.html">go to a page on a web site</a>
+```
+
+. . . 
+
+```html
+<a href="https://unimi.it/ma/com/index.html#label">go to a specifi position of an external page</a>
+```
+
+---
+
+## Concepts, e
+
+The `<div>` tag:
+
+divides text or areas of the page
+
+it's a *semantic* tag: what it does will be coded by us
+
+Example: style the first para. differently
+
+```html
+<div id="first">...</div>
+<div id="regular">...</div>
+```
+
+---
+
+## Skills, a
+
+- VS Code with extensions to edit HTML/CSS files
+
+are you confortable?
+
+  
+---
+
+## Skills, b (today)
+
+- git to synchronise with the class Github repository:
+
+Get started, get a local copy:
+
+```bash
+>git clone https://github.com/ale66/learn-coding.git
+```
+
+Synch the material daily (or weekly)
+
+```bash
+>git pull
+```
+
+
+---
+
+## skills: c
+
+The basic HTML typography mark-up
+
+A small, 'Digital Humanities' project to popularise Cicero's work
+
+
+
+

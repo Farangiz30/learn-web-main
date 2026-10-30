@@ -1,0 +1,461 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    transition: slide
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+# Learning objectives
+
+---
+
+## Topics
+
+- A glimpse of browser operations
+
+- HTML is a *formal language* for defining pages
+  - parsing
+  - formal grammars
+  - an industrial standard
+
+- the DOM representation of pages 
+  - *tree* representation
+  - tree decoration
+
+- CSS and JS 
+
+# Browser operations
+
+---
+
+## Concept: platform
+
+the combination of 
+
+- network access
+- hardware
+- operating system
+- browser
+
+that supports our page visit experience
+
+E.g.: Eduroam Wi-Fi/Acer laptop w. Intel Celeron/Win 11 Pro/Firefox 156
+
+---
+
+## Concept: interoperability
+
+files that are uniformly processed (or rendered or executed) independently of the *platform*
+
+## Levels of interoperability
+
+Text/data filees, e.g. `thesis.txt` or `thesis.docx`: almost always interoperable
+
+Web pages, e.g., `promotions.html`: broadly interoperable, but browser issues
+
+AV, e.g., `my_profile_pic.jpg`: generally ok but hardware-dependent experience
+
+
+---
+
+Source codes, e.g.,  `my_code.py`: interoperable, but compiler issues
+
+executables, e.g., `firefox.exe`: generally not interoperable
+
+  - create one for each plat.
+  - runtime environments
+
+operating sys: look the same but are very plat. specific (drivers)
+
+---
+
+## Browsers
+
+Reads HTML files and renders a page for viewing/clicking
+
+To do so, it will read and incorporate several auxiliary files
+
+  - style files in CSS format
+  - images
+  - linked pages (for previews)
+
+
+. . .
+
+Browsers are the top software today with [a huge code base](https://openhub.net/p/chrome/analyses/latest/languages_summary)
+
+---
+
+## The gist, a
+
+We often experience web pages as digital equivalents of the newspaper page:
+
+read title, go down, read top-to-bottom, left-to-right
+
+---
+
+## The gist, b 
+
+HTML files are generally organised top-to-bottom, left-to-right
+
+However, they have tag containment, which creates a hierarchy of reading
+
+Browsers read HTMl files and create an internal representation in the form of a *tree.*
+
+
+# The tree model of web pages
+
+---
+
+## Important properties
+
+Whereas rendered pages are normally related to a linear, left-to-right, top-down reading, browsers see pages as *trees*
+
+Biological tree: one *root* element at the bottom which splits up repeatedly in smaller and smaller branches; leaves at the top
+
+![](./imgs/dragon-blood-tree.jpg)
+
+---
+
+## HTML example page
+
+```html
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <title>Example web page</title>
+  </head>
+
+  <body>
+    <h1>Cicero's Lorem Ipsum</h1>
+    <div>
+      <p>A summary</p>
+      <p>Lorem ipsum dolor...</p>
+    </div>
+  </body>
+</html>
+```
+
+
+---
+
+HTML tree: flipped upside down
+
+a single root element at the top
+
+branching out into several smaller elements, some of them are *siblings*
+
+![](./imgs/example-dom.png)
+
+the two ``<p>`` are siblings```
+
+
+---
+
+## Parsing
+
+Automated reading of a formal (code) file with *recognition* of the commands
+
+HTML branch tags must be strictly contained into their *root*
+
+are mistyping can throw the automated parsing off track
+
+
+---
+
+
+```html
+<!doctype html>
+```
+
+This is not HTML but a directive (via the `!`) 
+
+the browser (and the operating system and the network services running below it) will know how to handle it.
+
+. . . 
+
+```html
+<!doctype html>
+<html lang="en">
+  ...
+</html>
+```
+
+---
+
+Mandatory: one root with two branches
+
+::::::: {.columns}
+::: {.column}
+```html
+<!doctype html>
+
+<html lang="en">
+  <head></head>
+  <body></body>
+</html>
+```
+
+:::
+::: {.column}
+```{mermaid}
+%%| echo: false
+flowchart TD
+  A[html] --> B[head]
+  A[html] --> C[body]
+
+```
+:::
+:::::::
+
+---
+
+One root, two branches and two leaves
+
+::::::: {.columns}
+::: {.column}
+```html
+<!doctype html>
+
+<html>
+  <head>
+    <title>My DOM page</title>
+  </head>
+  <body>
+    <h1>Visible title</h1>
+    <p>First para</p>
+  </body>
+</html>
+```
+:::
+::: {.column}
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[html] --> B[head] & C[body]
+  B --> D[title]
+  C --> E[h1] & F[p]
+```
+:::
+:::::::
+
+---
+
+::::::: {.columns}
+::: {.column}
+```html
+<html>
+  <head>
+    <title>My DOM page</title>
+  </head>
+  <body>
+    <h1>Visible title</h1>
+    <p>First para.</p>
+    <p>More text.</p>
+    <p>Further text.</p>
+...
+```
+:::
+::: {.column}
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[html] --> B[head] & C[body]
+  B --> D[title]
+  C --> E[h1] & F[p] & G[p] & H[p]
+```
+:::
+:::::::
+
+---
+
+Browsers process each tag as a *path* from root to the respective leaf:
+
+```html
+<html><body><h1>Visible title</h1>
+```
+
+```html
+<html><Body><p>First para</p>
+```
+
+Additionally, leaves may be assigned an `id` name:
+
+```html
+<html><body><p id="top-para">First para.</p>
+```
+
+And so on:
+
+```html
+<html><body><p id="middle-para">More text</p>
+
+<html><body><p id="bottom-para">Further text.</p>
+```
+
+---
+
+Next, all the needed CSS command will be picked up from the CSS file and attached to the element
+
+```html
+<html><body><h1 class="my_hero_title">My big, fat title</h1>
+```
+
+Where the CSS contains:
+
+```css
+.my_hero_title {
+  font-color: darksalmon;
+  ...
+}
+```
+
+Free choice of class names but they must be unique
+
+---
+
+## How browsers actually see our page 
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[html] --> B[head] & C[body]
+  B --> D[title]
+  C --> E[h1] & F[p] & G[p] & H[p]
+  E-.-> I[.my-hero-title]
+```
+
+
+## Make pages alive
+
+each HTML page has an associated *tree* representation with tags and class names
+
+the tree representation guides the writing of JavaScript (JS) programs that can manipulate the structure of the page 
+
+and how it looks to, e.g., classes of users
+
+__We study the DOM to make pages come alive__
+
+Try the *red background* example on Sec. 1.1 of [dom.spec.whatwg.org/](https://dom.spec.whatwg.org/) 
+
+---
+
+## Exercise, a: view the DOM of your own pages
+
+Take your own Lorem project and feed it to DOM visualisers on GH:
+
+[codu-code.github.io/dom-visualizer/](https://codu-code.github.io/dom-visualizer/index.html)
+
+[bioub.github.io/dom-visualizer/](http://bioub.github.io/dom-visualizer/)
+
+Try again with some published page, e.g., [com.cdl.unimi.it/en](https://com.cdl.unimi.it/en)
+
+---
+
+
+## Represent content
+
+assume that ``my_font`` is a style defined in the relative .css file (more later)
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[html] --> B[head] & C[body]
+  B --> D[title]
+  C --> E[h1] & F[p] & G[p] & H[p]
+  E-.-> I[.my_font]
+```
+
+inside most tags there is content to be displayed.
+
+Such content is represented as an explicit DOM leaf
+
+---
+
+##
+
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[html] --> B[head] & C[body]
+  B --> D[title]
+  C --> E[h1] & F[p] & G[p] & H[p]
+  E-.-> I[.my_font]
+  D --> L[My DOM page]
+  E --> M[My visible title]
+  F --> N[some text]
+  G --> O[more text]
+  H --> P[further text]
+```
+
+for each leaf, a special `innerHTML` variable will contain the relative text and mark-up
+
+---
+
+A complete DOM
+
+```{mermaid}
+%%| echo: false
+flowchart TD
+  A[html] --> B[head] & C[body]
+  B --> D[title]
+  C --> E[h1] & F[p] & G[p] & H[p]
+  E-.-> I[.my_font]
+  D --> L[My DOM page]
+  E --> M[My visible title]
+  F --> N[some text]
+  F-.-> Q[.my-para-style]
+  G --> O[more text]
+  G-.-> Q
+  H --> P[further text]
+  H-.-> Q
+```
+
+all later tools (CSS, JavaScript, accessibility) work on the DOM when the browser loads the page
+
+
+## Exercise, b
+
+Open your Lorem page on Firefox
+
+Press ``alt``: the menus appear on top
+
+select ``Tools/Browser tools/Web developer tools``
+
+explore the final (i.e., after decoration) state of the page
+
+
+---
+
+## A language that never says "no"
+
+In CS, formal language correctness is fundamental (no poetry!)
+
+Yet, the HTMl *parser* module of browsers is **total**: any input yields a tree/a page
+
+* legacy of the 90s: browsers were forgiving, so pages were sloppy
+
+* today tags like `<html>`, `<head>` and `<body>` are still *implied*  
+
+* the standard now specifies the *recovery* precisely, so all browsers build *the same* tree (visualisation may show subtle differences)
+
+
+
+
+## For reference only
+
+* [WHATWG HTML Standard: parsing](https://html.spec.whatwg.org/multipage/parsing.html)
+
+* [WHATWG DOM Standard](https://dom.spec.whatwg.org/)
+
+* [MDN: Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)

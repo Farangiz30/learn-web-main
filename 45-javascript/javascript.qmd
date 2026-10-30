@@ -1,0 +1,495 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [solarized]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 2
+    mermaid: 
+      theme: neutral
+      echo: false
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+
+# Javascript
+
+---
+
+# JS
+
+- animates web pages
+- taylors pages to users and let them *act*
+- the only programming language that *runs in the browser* (now also on the server)
+
+. . .
+
+- extremely hard and unforgiving for learners
+- a core technology of the web is a mistake, essentially
+
+---
+
+## The JS *ecosystem* today
+
+```{mermaid}
+%%| echo: false
+graph LR
+    A[JavaScript] --> B[Client-Side]
+    A --> C[Server-Side]
+    
+    B --> D[Web Browsers]
+    B --> E[Mobile Apps]
+    B --> F[Desktop Apps]
+    
+    C --> G[Node.js]
+    C --> H[Deno]
+    C --> I[Bun]
+    
+    style A fill:#f7df1e
+    style B fill:#61dafb
+    style C fill:#68a063
+```
+
+---
+
+## JS between users and their pages
+
+```{mermaid}
+%%| echo: false
+sequenceDiagram
+    participant User
+    participant Browser
+    participant JS Engine
+    participant DOM
+    
+    User->>Browser: Loads webpage
+    Browser->>JS Engine: Executes JS code
+    JS Engine->>DOM: Manipulates elements
+    DOM->>Browser: Updates display
+    Browser->>User: Shows changes
+```
+
+---
+
+## JS examples
+
+```javascript
+// Variables
+let name = "Alice";
+const age = 25;
+
+// Functions
+function greet(person) {
+  return "Hello, " + person + "!";
+}
+
+// Calling a function
+console.log(greet(name));
+```
+
+notice `;` as line terminator
+
+---
+
+## Hello World! in JS
+
+```html
+<html>
+<head></head>
+<body>
+  <h1 id="greeting">Welcome</h1>
+
+  <button onclick="changeGreeting()">Click Me</button>
+
+  <script>
+    function changeGreeting() {
+      document.getElementById('greeting').textContent = 
+        'Hello, JavaScript!';
+    }
+  </script>
+</body>
+</html>
+```
+
+**Result:** Button click changes the heading text
+
+---
+
+## Example 2: Interactive Counter
+
+```html
+<html>
+<head></head>
+<body>
+  <h1>Count: <span id="count">0</span></h1>
+  <button onclick="increment()">Increment</button>
+  <button onclick="decrement()">Decrement</button>
+  <button onclick="reset()">Reset</button>
+
+  <script>
+    let count = 0;
+    
+    function increment() {
+      count++;
+      updateDisplay();
+    }
+    
+    function decrement() {
+      count--;
+      updateDisplay();
+    }
+    
+    function reset() {
+      count = 0;
+      updateDisplay();
+    }
+    
+    function updateDisplay() {
+      document.getElementById('count').textContent = count;
+    }
+  </script>
+</body>
+</html>
+```
+
+---
+
+# A step back: the basics
+
+---
+
+## JS Variables
+
+A JS variable is a symbolic name for some content, the *value,* that is kept in the browser's (volatile) memory
+
+In spreadsheets, cells are variables
+
+![](./imgs/quiz-data.png)
+
+`B2 = 32` is a variable with name `B2`, content `32` and type `int`
+ 
+---
+
+## Data Types
+
+```{mermaid}
+%%| echo: false
+graph TD
+    A[JS  ] --> B[Primitive]
+    A --> C[Object]
+    
+    B --> D[String]
+    B --> E[Number]
+    B --> F[Boolean]
+    B --> G[Undefined]
+    B --> H[Null]
+    B --> I[Symbol]
+    B --> J[BigInt]
+    
+    C --> K[Object]
+    C --> L[Array]
+    C --> M[Function]
+    
+    style A fill:#f7df1e
+    style B fill:#4ecdc4
+    style C fill:#ff6b6b
+```
+
+---
+
+# JS Functions
+
+![](./imgs/function-as-blackbox.png)
+
+
+---
+
+Functions are a key abstraction to model nature and processes
+
+a regular input/output or cause/effect behaviour is identified and *given a name*
+
+```text
+The higher the temperature the quicker pizza cooks.
+
+Cooking time is a function of the temperature in the oven.
+```
+
+
+---
+
+## Functions in coding
+
+A function is a block of code (instructions) that 
+
+- has a clear input/output definition and 
+
+- executes in a separated environment
+
+Spreadsheets: `B4 = (B2 + B3)/2` is a function
+
+
+---
+
+```js
+/* Convert Italian exam marks into percentages */
+function marks2pc(marks) {
+
+  let converted = (marks / 30) * 100
+
+  // Math.round() is a 'foreign' function that rounds up 50.65 --> 51 etc.
+  let pc = Math.round(converted);
+
+  return pc;
+} 
+```
+
+`marks` is a *parameter* of the f.
+
+`pc` is the *return value* of the f.
+
+---
+
+## Observations
+
+Functions only run when they are called ('invoked') within a code in execution
+
+```js
+/* convert and show on the page the UK version of the Webcomm marks */
+let my_marks = 27;
+
+let uk_marks = marks2pc(my_marks);
+
+document.getElementById("convertedMarks").innerHTML = uk_marks;
+```
+
+
+# Control Flow
+
+---
+
+```{mermaid}
+%%| echo: false
+flowchart TD
+    A[Start] --> B{Condition?}
+    B -->|True| C[Execute Code Block]
+    B -->|False| D[Skip Block]
+    C --> E[Continue]
+    D --> E
+    E --> F[End]
+    
+    style A fill:#a8e6cf
+    style B fill:#ffd3b6
+    style C fill:#ffaaa5
+    style F fill:#a8e6cf
+```
+
+---
+
+## Conditional Statements
+
+```javascript
+let age = 18;
+
+if (age >= 18) {
+  console.log("You are an adult");
+} else if (age >= 13) {
+  console.log("You are a teenager");
+} else {
+  console.log("You are a child");
+}
+
+// Ternary operator
+let status = age >= 18 ? "adult" : "minor";
+```
+
+---
+
+## Example 3: Age Checker
+
+```html
+<html>
+<head></head>
+<body>
+  <h1>Age Verification</h1>
+  <input type="number" id="ageInput" placeholder="Enter your age">
+  <button onclick="checkAge()">Check</button>
+  <p id="result"></p>
+
+  <script>
+    function checkAge() {
+      const age = document.getElementById('ageInput').value;
+      const result = document.getElementById('result');
+      
+      if (age === '') {
+        result.textContent = 'Please enter your age';
+      } else if (age < 13) {
+        result.textContent = 'You are a child';
+      } else if (age < 18) {
+        result.textContent = 'You are a teenager';
+      } else {
+        result.textContent = 'You are an adult';
+      }
+    }
+  </script>
+</body>
+</html>
+```
+
+
+# Iteration
+
+---
+
+## Basic idea
+
+We need to operate over sequences/collection of atomic data
+
+Example: column operations in spreasheets
+
+```js
+=AVERAGE(A1:A100)
+```
+
+```js
+=AVERAGEIF(A1:A100, ">0")
+```
+
+```js
+=ROUND(A1, 2)
+```
+
+then pull the formula over the whole column.
+
+---
+
+## Iterations, a
+
+```javascript
+// For loop
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+---
+
+## Iterations, b
+
+```js
+// While loop
+let count = 0;
+while (count < 5) {
+  console.log(count);
+  count++;
+}
+```
+
+---
+
+## Indexed data
+
+A sequence of values stored in a variable that can be accessed individually by means of their **position** (index)
+
+```javascript
+let fruits = ["apple", "banana", "cherry"];
+
+console.log(fruits[0]);  // "apple"
+console.log(fruits[1]);  // "banana"
+console.log(fruits[2]);  // "cherry"
+```
+
+- use of square brackets
+- indices start at **0**
+- each element has a unique position
+- two main types: **arrays** and **strings**
+
+---
+
+## Strings
+
+Text treated as a sequence of keyboard characters
+
+Same indexing as arrays
+
+```javascript
+let word = "Hello";
+
+console.log(word[0]);  // "H"
+console.log(word[1]);  // "e"
+console.log(word[4]);  // "o"
+```
+
+---
+
+## the lenght
+
+Both arrays and strings have a **length** property
+
+```javascript
+let colors = ["red", "green", "blue"];
+
+let name = "JavaScript";
+
+console.log(colors.length);  // 3
+console.log(name.length);    // 10
+```
+
+Last element is always at index: `length-1`
+
+---
+
+## Practice
+
+```javascript
+let numbers = [10, 20, 30, 40, 50];
+
+let message = "Code";
+
+// What will these output?
+numbers[3]
+message[0]
+numbers[numbers.length - 1]
+```
+
+---
+
+## Iterations, c
+
+```js
+// fruits is an array of strings
+const fruits = ['apple', 'banana', 'orange'];
+for (const fruit of fruits) {
+  console.log(fruit);
+}
+```
+
+---
+
+```js
+/* convert and show on the page the UK version of the marks */
+for (const m of my_italian_exam_marks){
+  let uk_marks = marks2pc(m);
+  console.log(uK_marks)
+}
+```
+
+Copy and run it on [pythontutor.com](https://pythontutor.com/)
+
+`console.log()` and `window.alert()` are simple ways to print out results. 
+
+---
+
+## Observations
+
+Functions should be defined every time a block of code is required to appear more than once: 
+
+- improve readability
+
+- improve maintainance
+
+JS is probably the hardest programming language for learners :flushed:

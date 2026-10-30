@@ -1,0 +1,295 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [moon]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 5
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+# Styles
+
+
+---
+
+## The digital page, so far
+
+- no fixed dimension
+  
+- light or no table of contents/hierarchy
+
+- basic tags control appearance
+
+- tag names and their effects are part of the HTML5 industrial standard 
+
+- minor variations on how browsers render HTML formatting.
+
+
+---
+
+## Style personalization
+
+inside each tag we can re-assign some style measures, e.g., colour:
+
+```html
+<tag style="attribute:value;">my text</tag>
+```
+
+Both ``attribute`` and ``value`` must be selected from a list of admitted names/values.
+
+Mind the syntax: ``style``, ``=``, ``""``, ``:`` and ``;`` are all indespensible.
+
+---
+
+## Examples
+
+```html
+<strong style="color: red;">Lorem Ipsum<strong>
+```
+
+- try it on your project
+
+```html
+<strong style="color: red; font-weight: bolder;">Lorem Ipsum</strong>
+```
+
+(check fonts weights on [Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight))
+
+---
+
+but what about
+
+```html
+<b>L</b>orem ipsum <strong style="color: red;">dolor</strong> sit amet, consectetur 
+```
+
+<b>L</b>orem ipsum <strong style="color: red;">dolor</strong> sit amet, consectetur 
+
+- too muany visuals at once
+
+- the source quickly becomes unreadable
+
+- hard to make global changes (e.g., all instances of *dolor* now become green)
+
+---
+
+## A special operation
+
+```html
+<div style=”text-indent: 16px;”>
+```
+
+# Motivations for styling
+
+
+---
+
+## Digital twins
+
+A new concept in Engineering
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Digital_twin):
+
+*[...] a computational model of an intended or actual real-world physical product, system, or process (a physical twin)* 
+
+. . .
+
+*that serves as a digital counterpart of it for purposes such as simulation, integration, testing, monitoring, and maintenance.*
+
+---
+
+## Digital twins
+
+
+*[...] a computational model of an intended or actual real-world physical product, system, or process (a physical twin) that serves as a digital counterpart of it for purposes such as simulation, integration, testing, monitoring, and maintenance.*
+
+. . .
+
+*By its strict definition, a digital twin is distinguished from an ordinary simulation in that it continuously uses real data from its physical counterpart to dynamically synchronize with the real system.*
+
+
+---
+
+## Web digital twins
+
+Sometimes our IG/FB/LI profile, continuosly maintained, is *our digital twin*
+
+(where does the analogy break down?)
+
+. . .
+
+the web page today is a *cultural digital twin* of many companies/products/events
+
+
+---
+
+## Levels of *digitality,* top down
+
+Digital life: 
+  - online banks, 
+  - online newspapers, 
+  - online universities, 
+  - digital art, 
+  - AI BF/GF/BF...
+
+---
+
+## Hybrid
+
+[www.unimi.it](https://www.unimi.it) 
+
+  - presents a physical university
+
+  - some activities are online-only 
+
+---
+
+## Physical, with cultural digital twins
+
+[www.campari.com](https://www.campari.com/)  
+
+  - can you like it, until you sip it?
+  - not really an online shop
+  - reclaims the brand and the image online
+  - **style is all** 
+
+
+# Styling pages
+
+
+---
+
+## Idea
+
+- redefine tags with our styles
+
+- create new tags to attach specific styles to text
+
+- __keep webpage styles separated from content__
+
+---
+
+## The engineering of styles
+
+- styles change seldom, mostly through large *facelifting* operations, graphics experts work on them
+
+- contents may change by the minute and are produced by a variety of actors (journalists)
+
+- to keep consistency across large web sites and re-use styles, two or more CSS files could be applied to one page
+
+
+# The CSS standard
+
+---
+
+![](https://kinsta.com/wp-content/uploads/2020/08/html-vs-css.png)
+
+
+---
+ 
+## Catch-up work 
+
+(discretionary for those who already used ``mystyle.css``)  
+
+from VS Code create a new CSS file, e.g., ``mystyle.css`` and save it alongside your Lorem ipsum page
+
+write on it: 
+
+  ```css
+  p {
+      text-indent: 20px;
+      text-align: justify;
+      letter-spacing: 3px;
+    }
+
+  span {
+        background-color: yellow;
+      } 
+  ```
+
+Notice the different syntax; use the embedded *code selector*
+
+---
+
+
+## Linking up your style
+
+
+```html
+  <link href="mystyle.css" rel="stylesheet" type="text/css" />
+```  
+
+reload to see how the browser applies the definitions from ``mystyle.css`` to the tags.
+
+Linking is *syntactical:* href value should be a valid path inside your folders
+
+- ``  href="./mystyle.css"``  in the same folder
+
+- ``  href="../mystyle.css"``  in the folder above
+
+
+---
+
+## Where's my style?
+
+- ``href="../../mystyle.css"``  two folders above
+
+- ``href="../30-visuals/mystyle.css"``  in the *sibling/parallel* folder called ``30-visuals``
+
+Always check by following up links
+
+---
+
+## Change the mood, all at once
+
+```css
+body {
+	font: 11px georgia, serif;
+	text-align: center;
+	color: #fff;
+	background: #748A9B;
+	margin: 0px;
+	}
+```
+
+Put this, the least-specific definition, as first in the CSS file
+
+
+---
+
+This should be the default
+
+```css
+h1, h2 {
+        text-align: center;
+        }
+```
+
+```css
+h1 {
+    color: purple;
+    }
+```
+
+
+# CSS in action
+
+---
+
+## The CSS Zen Garden
+
+A fixed HTML info page with a few links
+
+Different CSS files dress it up for different occasions and locations
+
+Visit it the [csszengarden](https://csszengarden.com/218/)
+
+
+
+Styles are on [GitHub](https://github.com/mezzoblue/csszengarden.com)

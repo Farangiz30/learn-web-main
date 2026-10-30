@@ -1,0 +1,133 @@
+---
+title: "Learn Web"
+author: "ale66"
+format: 
+  revealjs:
+    footer: "[github.com/ale66/learn-web](https://github.com/ale66/learn-web)&nbsp;&nbsp;&nbsp;"
+    theme: [solarized]
+    preview-links: auto
+    chalkboard: 
+      boardmarker-width: 2
+    mermaid:
+      theme: forest
+      fontSize: 12
+from: markdown+emoji
+execute:
+  echo: true
+---
+
+
+# Javascript into HTML
+
+---
+
+## Review: the DOM representation
+
+[Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model).
+
+![](./images/html-requires-js.jpg)
+
+---
+
+#### Conceptual framework
+
+We see the page as a top-down, left-to-right structure
+
+Browsers represent it internally as a tree.
+
+which grows from left to right.
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg)
+
+---
+
+## Nodes and how to access them
+
+Each tag used in the HTML page is represented as a node of the tree
+
+Assume that tags are given individual names with the `id` parameter.
+
+```html
+<h2 id="demo" class="hero-title">My first JS experiment</h2>
+```
+
+JS can access and change each aspect of the tag
+
+```js
+document.getElementById('demo').innerHTML = 'My 2nd JS experiment'
+```
+
+---
+
+```js
+document.getElementById('demo').innerHTML = 'My 2nd JS experiment'
+```
+
+`document` is the page itself
+
+. . .
+
+`.` combines the names
+
+. . .
+
+`getElementById('demo')` searches for the specific element in the DOM
+
+. . .
+
+`.innerHTML` is a leaf that contains the actual text to be displayed
+
+. . .
+
+read `=` as *assign* (the result obtained on its right to the variable to its left)
+
+. . .
+
+`'My 2nd JS experiment'` a *string* (sequence of characters) that will overwrite the existing text of the leaf
+
+---
+
+## Exercise: alerts
+
+Work inside the `<script>` tag to add JS instructions, separated by `;`
+
+```js
+document.getElementById("demo").style.color = "blue"
+```
+
+```js
+alert('The title has been changed!') 
+```
+
+---
+
+## JS: where to put it?
+
+<https://www.w3schools.com/js/js_whereto.asp>
+
+
+---
+
+## Output
+
+<https://www.w3schools.com/js/js_output.asp>
+
+
+---
+
+## The browser console
+
+Firefox: [Ctrl + Shift + k](https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Opening_the_Web_Console)
+
+Chromium: [Ctrl + Shift + j](https://developers.google.com/web/tools/chrome-devtools/console)
+
+
+---
+
+## Exercise
+
+Analise and deploy the [WaterCSS](https://watercss.netlify.app/) CSS generator.
+
+#### for home:
+
+Familiarise with [Markdown](https://gist.github.com/cuonggt/9b7d08a597b167299f0d) 

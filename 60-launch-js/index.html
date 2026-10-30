@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="launch-js_files/libs/clipboard/clipboard.min.js"></script>
+<script src="launch-js_files/libs/quarto-html/tabby.min.js"></script>
+<script src="launch-js_files/libs/quarto-html/popper.min.js"></script>
+<script src="launch-js_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="launch-js_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="launch-js_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="launch-js_files/libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="ale66">
+  <title>Learn Web</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="launch-js_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="launch-js_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="launch-js_files/libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
+  <link href="launch-js_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="launch-js_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="launch-js_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="launch-js_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="launch-js_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="launch-js_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Learn Web</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+ale66 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="launching-js" class="title-slide slide level1 center">
+<h1>Launching JS</h1>
+
+</section>
+<section id="review" class="slide level2">
+<h2>Review</h2>
+<ul>
+<li><p>JS is the programming language that runs ‘inside’ web pages</p></li>
+<li><p>it can access and change all details of the page at <em>rendering time</em></p></li>
+<li><p>access is through the DOM notation: <code>document.GetElamentById('demo').innerHtml</code></p></li>
+</ul>
+<p>Let’s review how JS changes the page, one element at a time</p>
+</section>
+<section id="change-text" class="slide level2">
+<h2>Change text</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href=""></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"demo"</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">'My 2nd JS experiment'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Element <code>demo</code> could be an <code>h1</code> or a <code>p</code> or a <code>div</code> etc.</p>
+</section>
+<section id="change-style" class="slide level2">
+<h2>Change style</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href=""></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'myPara'</span>)<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">fontSize</span> <span class="op">=</span> <span class="st">"30px"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now text is bigger</p>
+</section>
+<section id="redefine-elements-of-the-page-with-js" class="slide level2">
+<h2>Redefine elements of the page with JS</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href=""></a><span class="kw">const</span> my_restyled_para <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'myPara'</span>)<span class="op">;</span></span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a>my_restyled_para<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"My third JS experimen!"</span></span>
+<span id="cb3-4"><a href=""></a></span>
+<span id="cb3-5"><a href=""></a>my_restyled_para<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">fontSize</span> <span class="op">=</span> <span class="st">"30px"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>use the VS Code command-completion facility to know what parameters are available</p>
+</section>
+<section class="slide level2">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href=""></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"demo"</span>)<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">'My 2nd JS experiment'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>only changes text, no HTML</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href=""></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"demo"</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">'My 2nd JS &lt;it&gt;experiment&lt;/it&gt;'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Can insert HTML and force a re-rendering of the page</p>
+</section>
+<section id="change-any-property-of-the-named-tag" class="slide level2">
+<h2>Change any property of the named tag</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href=""></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> id</span><span class="op">=</span><span class="st">"myImage"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"./imgs/winter.jpg"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"200"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Start pic"</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As season change, we change the images.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href=""></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'myImage'</span>)<span class="op">.</span><span class="at">src</span> <span class="op">=</span> <span class="st">"./imgs/summer.jpg"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Important: the new file must be reachable from the page, or we will spoil the existing rendering</p>
+
+<img data-src="./imgs/summer.jpg" class="r-stretch"></section></section>
+<section>
+<section id="js-controls-the-page" class="title-slide slide level1 center">
+<h1>JS controls the page</h1>
+
+</section>
+<section class="slide level2">
+
+<p>JS functions can <em>get</em> the document they’re in</p>
+<p>With JS commands of type</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href=""></a><span class="bu">document</span><span class="op">.</span><span class="fu">func</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>we apply function <code>func()</code> to the whole document</p>
+<p>The browser will run <code>func()</code> when encounters it in the process of rendering the page or of running a JS function call</p>
+</section>
+<section id="js-page-activation" class="slide level2">
+<h2>JS page activation</h2>
+<p>JS code can change a hidden parameter, common to all tags, that controls <em>visibility</em></p>
+<p>Hence, we control which parts are shown at each stage of the visit</p>
+<p>An extreme case: <code>document.write()</code> will wipe out the page and rewrite it from scratch; changes are irreversible</p>
+</section>
+<section class="slide level2">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href=""></a><span class="bu">window</span><span class="op">.</span><span class="fu">alert</span>(<span class="st">'A message to be seen'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>a gentle way to get users’ attention</p>
+<p>useful in <em>debugging</em> code:</p>
+<p>when the behaviour differs from expected, we can execute step-by-step and check what values are stored into variables</p>
+<p><code>window.print()</code> is for printing on paper <span class="emoji" data-emoji="smile">😄</span></p>
+<p>here <code>window</code>, <code>window.document</code> and <code>document</code> are interchangeable</p>
+<p>For reference: document-level functions at <a href="https://www.w3schools.com/jsref/dom_obj_document.asp">w3schools</a></p>
+</section></section>
+<section>
+<section id="starting-js" class="title-slide slide level1 center">
+<h1>Starting JS</h1>
+
+</section>
+<section class="slide level2">
+
+<ul>
+<li>today, pages are often created <em>client-side:</em>
+<ul>
+<li>the browser gets a simple page + lots of JS code</li>
+<li>it runs the code to obtain the finished page</li>
+</ul></li>
+<li>in fact, JS execution can account for <em>layers</em> of personalisation (geo, tiee and cookies) that can only be descided at rendering time</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>JS code can be put in several places inside the page</p></li>
+<li><p>placement may negatively affect readability of the page</p></li>
+<li><p>it also changes what is available to JS</p></li>
+</ul>
+</div>
+</section>
+<section id="two-ways-to-start" class="slide level2">
+<h2>Two ways to start</h2>
+<p>JS functions execute</p>
+<ul>
+<li><p>automatically, when the browser loads and renders the page</p></li>
+<li><p>in response to user’s input, given through buttons, menus etc.</p></li>
+</ul>
+<p>We mostly study JS through the latter</p>
+</section>
+<section id="js-where-to-put-it" class="slide level2">
+<h2>JS: where to put it?</h2>
+<p>a short list of commands, separated by <code>;</code> cna be placed almost everywhere</p>
+<p>please the <a href="https://www.w3schools.com/js/js_whereto.asp">w3schools.com/js/js_whereto.asp</a></p>
+<p>Cleanest solution:</p>
+<ul>
+<li><p>put JS functions inside .js files</p></li>
+<li><p>keep those in a local folder called, e.g., <code>JS</code> of <code>Scrips</code></p></li>
+</ul>
+</section></section>
+<section>
+<section id="a-platform-for-learning" class="title-slide slide level1 center">
+<h1>A platform for learning</h1>
+
+</section>
+<section class="slide level2">
+
+<p>Learning programming languages is much like learning foreign human languages: theory and practice</p>
+<p>Python: interpreter, VS Code with lots of extensions, code profiler, problem-solvinng challenges etc.</p>
+<p>JS: VS Code, refresh page in the browser, not much else…</p>
+<p>JS does not have an input/output behaviour <em>per se</em></p>
+<p><a href="https://www.w3schools.com/js/js_output.asp">w3schools.com/js/js_output.asp</a></p>
+</section>
+<section id="the-browser-console" class="slide level2">
+<h2>The browser console</h2>
+<p>Firefox: <a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Opening_the_Web_Console">Ctrl + Shift + k</a></p>
+<p>Chromium: <a href="https://developers.google.com/web/tools/chrome-devtools/console">Ctrl + Shift + j</a></p>
+</section></section>
+<section>
+<section id="challenge" class="title-slide slide level1 center">
+<h1>Challenge</h1>
+
+</section>
+<section class="slide level2">
+
+<p>can you personalise the title of your page?</p>
+<p>I.e., write a JS function which changes the title of the page, e.g., inserting the date when the page has been loaded?</p>
+<p>Hint: study the <a href="https://www.w3schools.com/jsref/prop_doc_title.asp">title</a> function</p>
+<p>Thanks to the DOM we can write a 1-line function then invoke it in the <code>&lt;script&gt;</code> part at the bottom.</p>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise:</h2>
+<p>MA COM is outsourced to the new <em>University of S. Babila</em></p>
+<p><strong>Challenge:</strong> can you change all the links in a page from the base <code>www.unimi.it</code> to <code>www.unibabila.it</code>?</p>
+
+<img data-src="./src/imgs/homework2final.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>to get ready for the challenge cover the following units first:</p>
+<p><a href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp">getElementById()</a></p>
+<p><a href="https://www.w3schools.com/jsref/coll_doc_links.asp">links()</a></p>
+</section></section>
+<section>
+<section id="listeners" class="title-slide slide level1 center">
+<h1>Listeners</h1>
+
+</section>
+<section id="user-actions-trigger-js-reactions" class="slide level2">
+<h2>User actions trigger JS reactions</h2>
+<p>There is a set of advanced HTML tags that are for user interaction:</p>
+<ul>
+<li>bottom</li>
+<li>input fields</li>
+<li>forms</li>
+<li>pull-down menus</li>
+<li>lists (see example in this section)</li>
+</ul>
+<p>User interaction on any of these can be connected to invocation of a JS function</p>
+<p>In principle, all DOM objects can be decorated with a <em>listener</em></p>
+</section>
+<section id="listeners-1" class="slide level2">
+<h2>Listeners</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href=""></a><span class="op">&lt;</span>script<span class="op">&gt;</span></span>
+<span id="cb10-2"><a href=""></a>    <span class="co">//'change' is managed by the browser;</span></span>
+<span id="cb10-3"><a href=""></a>    <span class="co">// every time the selected value changes, it invokes the 'react' function</span></span>
+<span id="cb10-4"><a href=""></a>    <span class="co">// notice the lack of parentheses for react: tricky setup! </span></span>
+<span id="cb10-5"><a href=""></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'marksSelector'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'change'</span><span class="op">,</span> react)<span class="op">;</span></span>
+<span id="cb10-6"><a href=""></a><span class="op">&lt;/</span>script<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>change</code> is the event that triggers execution of function <code>react()</code>, here without <code>()</code></p>
+<p>Other notable events are <code>click</code>, <code>mouseover</code>…</p>
+</section>
+<section id="advanced" class="slide level2">
+<h2>Advanced:</h2>
+<p><a href="https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp">getElementsByClassName()</a></p>
+<p>requires handling a <strong>collection</strong> of HTML elements. Proceed if you are familiar with lists or arrays in any programming language.</p>
+</section>
+<section id="further-topics" class="slide level2">
+<h2>Further topics</h2>
+<p>Analise the <a href="https://watercss.netlify.app/">WaterCSS</a> CSS generator.</p>
+<p>Use <a href="https://gist.github.com/cuonggt/9b7d08a597b167299f0d">Markdown</a> to format your instructions.</p>
+</section>
+<section id="a-note-about-learning" class="slide level2">
+<h2>A note about learning</h2>
+<p>Please do not</p>
+<ul>
+<li><p>watch YouTube videos as they might slow down/comfuse/hinder your learning</p></li>
+<li><p>prompt ChatGPT and similar as you (probably) won’t learn anything</p></li>
+</ul>
+<div class="fragment">
+<p>Please do use <em>active learning</em> web sites such as</p>
+<ul>
+<li><a href="">wdpg.io</a></li>
+<li><a href="https://www.w3schools.com/html/default.asp">w3schools.com/html</a></li>
+<li><a href="https://www.w3schools.com/css/default.asp">w3schools.com/css</a></li>
+<li><a href="https://www.w3schools.com/js/default.asp">w3schools.com/js</a></li>
+</ul>
+
+</div>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="https://github.com/ale66/learn-web">github.com/ale66/learn-web</a>&nbsp;&nbsp;&nbsp;</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="launch-js_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="launch-js_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="launch-js_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="launch-js_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"boardmarkerWidth":2},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
